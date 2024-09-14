@@ -14,6 +14,7 @@
 		3B53E1FE2C91BAED001E3CDD /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B53E1FD2C91BAED001E3CDD /* Helpers.swift */; };
 		3B6A0D0B2C91984700ABEF89 /* FetchTopCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A0D0A2C91984700ABEF89 /* FetchTopCrypto.swift */; };
 		3B6A0D0D2C919EA600ABEF89 /* CryptoCurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A0D0C2C919EA600ABEF89 /* CryptoCurrencyData.swift */; };
+		3B7294352C96216F009C7F48 /* Portfolio2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7294342C96216F009C7F48 /* Portfolio2.swift */; };
 		3BB7A83A2C90740900ABD571 /* CryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB7A8392C90740900ABD571 /* CryptoCell.swift */; };
 		3BB7A83C2C907AE500ABD571 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB7A83B2C907AE500ABD571 /* GraphView.swift */; };
 		3BB7A83E2C907AF600ABD571 /* FetchGraphDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB7A83D2C907AF600ABD571 /* FetchGraphDetails.swift */; };
@@ -36,6 +37,7 @@
 		3B53E1FD2C91BAED001E3CDD /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		3B6A0D0A2C91984700ABEF89 /* FetchTopCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTopCrypto.swift; sourceTree = "<group>"; };
 		3B6A0D0C2C919EA600ABEF89 /* CryptoCurrencyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCurrencyData.swift; sourceTree = "<group>"; };
+		3B7294342C96216F009C7F48 /* Portfolio2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio2.swift; sourceTree = "<group>"; };
 		3BB7A8392C90740900ABD571 /* CryptoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCell.swift; sourceTree = "<group>"; };
 		3BB7A83B2C907AE500ABD571 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		3BB7A83D2C907AF600ABD571 /* FetchGraphDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGraphDetails.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				3B382B3B2C9188C700C6A63F /* Portfolio.swift */,
 				3BCA81E92C942E09008A734B /* BuyView.swift */,
 				3B3A8F792C9440A300F975A1 /* SellView.swift */,
+				3B7294342C96216F009C7F48 /* Portfolio2.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				3BBF9A1E2C9613B300AA1437 /* OwnedCryptos.swift in Sources */,
 				3B6A0D0B2C91984700ABEF89 /* FetchTopCrypto.swift in Sources */,
 				3B382B382C91888A00C6A63F /* Tabs.swift in Sources */,
+				3B7294352C96216F009C7F48 /* Portfolio2.swift in Sources */,
 				3B382B3C2C9188C700C6A63F /* Portfolio.swift in Sources */,
 				3BCFDF1E2C90AE33006AA7C3 /* HomeView.swift in Sources */,
 				3B382B3A2C9188B900C6A63F /* Search.swift in Sources */,
