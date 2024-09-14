@@ -20,7 +20,7 @@ struct ContentView: View {
                     Search()
                         .tag(Tab.search)
                         .tabItem { Tab.search.tabContent }
-                    Portfolio()
+                    Portfolio2()
                         .tag(Tab.portfolio)
                         .tabItem { Tab.portfolio.tabContent }
                 }
