@@ -1,9 +1,3 @@
-//
-//  CryptoCurrencyData.swift
-//  iOSFusionApp
-//
-//  Created by Shivam Sultaniya on 11/09/24.
-//
 
 import Foundation
 

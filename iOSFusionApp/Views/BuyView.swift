@@ -18,7 +18,6 @@ struct BuyView: View {
         formatter.maximumFractionDigits = 8
         return formatter
     }()
-    
     var body: some View {
         ZStack {
             Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all)

@@ -6,12 +6,12 @@ struct IntroScreen: View {
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [
-                Color.white,  // Light pink shade
+                Color.white,
                 Color(red: 199 / 255, green: 236 / 255, blue: 238 / 255),
-                Color(red: 199 / 255, green: 236 / 255, blue: 238 / 255)// #FEFBFA (off-white)
+                Color(red: 199 / 255, green: 236 / 255, blue: 238 / 255)
                 ]),startPoint: .topLeading, endPoint: .bottomTrailing)
             .ignoresSafeArea()
-            
+        
             
             VStack{
                 
@@ -36,6 +36,7 @@ struct IntroScreen: View {
                         .frame(width: 375,height: 280)
                         .foregroundColor(.white)
                         .padding(.bottom,7)
+                        .padding(.leading,12)
                         .ignoresSafeArea(edges: .bottom)
                     
                     VStack(spacing:20){
@@ -64,7 +65,7 @@ struct IntroScreen: View {
                             Text("Get Started")
                                 .foregroundColor(.white)
                                 .font(.system(size: 16, weight: .semibold))
-                                .frame(width: 360,height: 50)
+                                .frame(width: 310,height: 50)
                                 .background(Color.black)
                                 .cornerRadius(10)
                         }

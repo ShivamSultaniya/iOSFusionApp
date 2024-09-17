@@ -124,7 +124,6 @@ struct PortfolioDistributionView: View {
             Text("Portfolio Distribution")
                 .font(.headline)
                 .foregroundColor(.white)
-            
             Chart(cryptocurrencies) { crypto in
                 SectorMark(
                     angle: .value("Value", crypto.value),
@@ -134,7 +133,6 @@ struct PortfolioDistributionView: View {
                 .foregroundStyle(crypto.color)
             }
             .frame(height: 200)
-            
             HStack {
                 ForEach(cryptocurrencies) { crypto in
                     HStack {

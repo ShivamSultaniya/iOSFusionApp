@@ -1,9 +1,4 @@
-//
-//  ContentView.swift
-//  iOSFusionApp
-//
-//  Created by Shivam Sultaniya on 10/09/24.
-//
+
 
 import SwiftUI
 import Charts

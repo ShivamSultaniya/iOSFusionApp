@@ -1,9 +1,4 @@
-//
-//  ContentView.swift
-//  iOSFusionApp
-//
-//  Created by Shivam Sultaniya on 07/09/24.
-//
+
 
 import SwiftUI
 
@@ -20,7 +15,7 @@ struct ContentView: View {
                     Search()
                         .tag(Tab.search)
                         .tabItem { Tab.search.tabContent }
-                    Portfolio2()
+                    Portfolio()
                         .tag(Tab.portfolio)
                         .tabItem { Tab.portfolio.tabContent }
                 }

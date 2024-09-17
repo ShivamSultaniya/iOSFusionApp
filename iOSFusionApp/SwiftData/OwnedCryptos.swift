@@ -1,9 +1,4 @@
-//
-//  OwnedCryptos.swift
-//  iOSFusionApp
-//
-//  Created by Shivam Sultaniya on 15/09/24.
-//
+
 
 import Foundation
 import SwiftData
