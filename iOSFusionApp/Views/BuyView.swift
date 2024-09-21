@@ -18,15 +18,18 @@ struct BuyView: View {
         formatter.maximumFractionDigits = 8
         return formatter
     }()
+    
     var body: some View {
         ZStack {
-            Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all)
+            LinearGradient(gradient: Gradient(colors: [.blue.opacity(0.3), .purple.opacity(0.3)]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
             
-            VStack(spacing: 20) {
+            VStack(spacing: 25) {
                 
                 cryptoHeader
                 
                 Divider()
+                    .background(Color.white.opacity(0.5))
                 
                 quantitySection
                 
@@ -40,8 +43,7 @@ struct BuyView: View {
                 
             }
             .padding()
-            .cornerRadius(20)
-            .shadow(radius: 10)
+            .background(RoundedRectangle(cornerRadius: 20).fill(Color.white).shadow(radius: 10))
             .padding()
         }
         .navigationBarTitle("Buy \(cryptoSymbol)", displayMode: .inline)
@@ -61,10 +63,12 @@ struct BuyView: View {
                 Text(cryptoSymbol)
                     .font(.title2)
                     .fontWeight(.bold)
+                    .foregroundColor(.primary)
                 
                 HStack {
                     Text("$\(String(format: "%.2f", cryptoPrice))")
                         .font(.headline)
+                        .foregroundColor(.primary)
                     
                     Text(change > 0 ? "+\(String(format: "%.2f", change))%" : "\(String(format: "%.2f", change))%")
                         .font(.subheadline)
@@ -84,6 +88,7 @@ struct BuyView: View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Quantity to Buy")
                 .font(.headline)
+                .foregroundColor(.primary)
             
             HStack {
                 Button(action: { if buyQuantity > 0 { buyQuantity = max(0, buyQuantity - 0.1) } }) {
@@ -91,6 +96,7 @@ struct BuyView: View {
                         .foregroundColor(.blue)
                 }
                 
+               
                 TextField("0", value: $buyQuantity, formatter: formatter)
                     .keyboardType(.decimalPad)
                     .multilineTextAlignment(.center)
@@ -98,11 +104,12 @@ struct BuyView: View {
                     .padding()
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(10)
-                    .onChange(of: buyQuantity) {
+                    .onChange(of: buyQuantity) { oldValue, newValue in
+                        print("Old Quantity: \(oldValue), New Quantity: \(newValue)")
                         calculatePrice()
                     }
-                   
-                
+
+
                 Button(action: { buyQuantity += 0.1 }) {
                     Image(systemName: "plus.circle.fill")
                         .foregroundColor(.blue)
@@ -115,6 +122,7 @@ struct BuyView: View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Total Cost")
                 .font(.headline)
+                .foregroundColor(.primary)
             
             Text("$\(String(format: "%.2f", buyAmount))")
                 .font(.title2)
@@ -130,6 +138,7 @@ struct BuyView: View {
         VStack(alignment: .leading, spacing: 5) {
             Text("Your Balance")
                 .font(.headline)
+                .foregroundColor(.primary)
             
             Text("$10,000.00")
                 .font(.title3)
@@ -137,7 +146,7 @@ struct BuyView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(Color.blue.opacity(0.1))
+        .background(Color.blue.opacity(0.2))
         .cornerRadius(10)
     }
     
@@ -150,15 +159,15 @@ struct BuyView: View {
                 .foregroundColor(.white)
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
-                .background(Color.blue)
-                .cornerRadius(10)
+                .background(LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .leading, endPoint: .trailing))
+                .cornerRadius(12)
+                .shadow(radius: 5)
         }
         .alert(isPresented: $showingConfirmation) {
             Alert(
                 title: Text("Confirm Purchase"),
                 message: Text("Are you sure you want to buy \(formatter.string(from: NSNumber(value: buyQuantity)) ?? "") \(cryptoSymbol) for $\(String(format: "%.2f", buyAmount))?"),
                 primaryButton: .default(Text("Confirm")) {
-                   
                     presentationMode.wrappedValue.dismiss()
                 },
                 secondaryButton: .cancel()
@@ -176,5 +185,4 @@ struct BuyView_Previews: PreviewProvider {
         BuyView(image: "media/37746251/btc.png", cryptoSymbol: "BTC", cryptoPrice: 55000.0, change: 1.27)
     }
 }
-
 
