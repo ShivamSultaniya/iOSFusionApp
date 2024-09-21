@@ -9,7 +9,7 @@ struct ApiResponse: Codable {
 
 struct CoinData: Codable {
     let CoinInfo: CoinInfo
-    let RAW: RawData
+    let RAW: RawData?
 }
 
 struct CoinInfo: Codable {
@@ -54,9 +54,24 @@ class FetchTopCrypto {
             do{
                 let decoder = JSONDecoder()
                 let apiResponse = try decoder.decode(ApiResponse.self, from: data)
-                let apiData = apiResponse.Data.map{
-                    CryptoCurrencyData(symbolName: $0.CoinInfo.Name, fullName: $0.CoinInfo.FullName, imageUrl: $0.CoinInfo.ImageUrl, price: $0.RAW.USD.PRICE, vol24Hour: $0.RAW.USD.VOLUME24HOUR, mktCap: $0.RAW.USD.MKTCAP, low: $0.RAW.USD.LOW24HOUR, high: $0.RAW.USD.HIGH24HOUR, changepct: $0.RAW.USD.CHANGEPCTDAY)
+                let apiData = apiResponse.Data.compactMap { coinData -> CryptoCurrencyData? in
+                    guard let rawData = coinData.RAW else {
+                        print("RAW data missing for \(coinData.CoinInfo.Name)")
+                        return nil
+                    }
+                    return CryptoCurrencyData(
+                        symbolName: coinData.CoinInfo.Name,
+                        fullName: coinData.CoinInfo.FullName,
+                        imageUrl: coinData.CoinInfo.ImageUrl,
+                        price: rawData.USD.PRICE,
+                        vol24Hour: rawData.USD.VOLUME24HOUR,
+                        mktCap: rawData.USD.MKTCAP,
+                        low: rawData.USD.LOW24HOUR,
+                        high: rawData.USD.HIGH24HOUR,
+                        changepct: rawData.USD.CHANGEPCTDAY
+                    )
                 }
+
                 completion(apiData)
             }
             catch let decodingError{
