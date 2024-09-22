@@ -6,7 +6,8 @@ struct SellView: View {
     var cryptoPrice: Double
     var change: Double
     
-    @State private var sellQuantity: Double = 0
+    @State private var buyQuantity: Double = 0
+    @State private var buyAmount: Double = 0
     @State private var showingConfirmation = false
     
     @Environment(\.presentationMode) var presentationMode
@@ -18,16 +19,12 @@ struct SellView: View {
         return formatter
     }()
     
-    // Computed property to calculate the sell amount based on sellQuantity and cryptoPrice
-    private var sellAmount: Double {
-        sellQuantity * cryptoPrice
-    }
-    
     var body: some View {
         ZStack {
             Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 20) {
+                
                 cryptoHeader
                 
                 Divider()
@@ -41,14 +38,14 @@ struct SellView: View {
                 balanceSection
                 
                 sellButton
+                
             }
             .padding()
-            .background(Color.white)
             .cornerRadius(20)
             .shadow(radius: 10)
             .padding()
         }
-        .navigationBarTitle("Sell \(cryptoSymbol)", displayMode: .inline)
+        .navigationBarTitle("Buy \(cryptoSymbol)", displayMode: .inline)
     }
     
     private var cryptoHeader: some View {
@@ -86,24 +83,28 @@ struct SellView: View {
     
     private var quantitySection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Quantity to Sell")
+            Text("Quantity to Buy")
                 .font(.headline)
             
             HStack {
-                Button(action: { if sellQuantity > 0 { sellQuantity = max(0, sellQuantity - 0.1) } }) {
+                Button(action: { if buyQuantity > 0 { buyQuantity = max(0, buyQuantity - 0.1) } }) {
                     Image(systemName: "minus.circle.fill")
                         .foregroundColor(.blue)
                 }
                 
-                TextField("0", value: $sellQuantity, formatter: formatter)
+                TextField("0", value: $buyQuantity, formatter: formatter)
                     .keyboardType(.decimalPad)
                     .multilineTextAlignment(.center)
                     .frame(width: 100)
                     .padding()
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(10)
+                    .onChange(of: buyQuantity) {
+                        calculatePrice()
+                    }
+                   
                 
-                Button(action: { sellQuantity += 0.1 }) {
+                Button(action: { buyQuantity += 0.1 }) {
                     Image(systemName: "plus.circle.fill")
                         .foregroundColor(.blue)
                 }
@@ -113,10 +114,10 @@ struct SellView: View {
     
     private var priceSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("You'll Receive")
+            Text("Total Cost")
                 .font(.headline)
             
-            Text("$\(String(format: "%.2f", sellAmount))")
+            Text("$\(String(format: "%.2f", buyAmount))")
                 .font(.title2)
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -128,16 +129,16 @@ struct SellView: View {
     
     private var balanceSection: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text("Your \(cryptoSymbol) Balance")
+            Text("Your Balance")
                 .font(.headline)
             
-            Text("\(formatter.string(from: NSNumber(value: 1.23456789)) ?? "") \(cryptoSymbol)")  // Replace with actual balance
+            Text("$10,000.00")
                 .font(.title3)
                 .fontWeight(.semibold)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(Color.red.opacity(0.1))
+        .background(Color.blue.opacity(0.1))
         .cornerRadius(10)
     }
     
@@ -155,15 +156,19 @@ struct SellView: View {
         }
         .alert(isPresented: $showingConfirmation) {
             Alert(
-                title: Text("Confirm Sale"),
-                message: Text("Are you sure you want to sell \(formatter.string(from: NSNumber(value: sellQuantity)) ?? "") \(cryptoSymbol) for $\(String(format: "%.2f", sellAmount))?"),
+                title: Text("Confirm Purchase"),
+                message: Text("Are you sure you want to buy \(formatter.string(from: NSNumber(value: buyQuantity)) ?? "") \(cryptoSymbol) for $\(String(format: "%.2f", buyAmount))?"),
                 primaryButton: .default(Text("Confirm")) {
-                    // Perform the sell action here
+                   
                     presentationMode.wrappedValue.dismiss()
                 },
                 secondaryButton: .cancel()
             )
         }
+    }
+    
+    private func calculatePrice() {
+        buyAmount = buyQuantity * cryptoPrice
     }
 }
 
