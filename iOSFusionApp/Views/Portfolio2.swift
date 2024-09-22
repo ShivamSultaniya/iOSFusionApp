@@ -1,6 +1,11 @@
 import SwiftUI
+import SwiftData
 
 struct Portfolio2: View {
+    
+    @Query(sort: \OwnedCryptos.quantity) var ownedCC: [OwnedCryptos] = []
+    
+    
     var body: some View {
         VStack(alignment:.leading) {
             // Top section for portfolio balance
@@ -32,39 +37,13 @@ struct Portfolio2: View {
                         .padding()
 
                     // Asset List
-                    ForEach(assetData) { asset in
-                        HStack {
-                            Image(systemName: asset.icon)
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(asset.color)
-
-                            VStack(alignment: .leading) {
-                                Text(asset.name)
-                                    .font(.headline)
-                                Text(asset.quantity)
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                            }
-
-                            Spacer()
-
-                            VStack(alignment: .trailing) {
-                                Text(asset.price)
-                                    .font(.headline)
-                                HStack(spacing: 5) {
-                                    Text(asset.changeAmount)
-                                        .font(.subheadline)
-                                        .foregroundColor(asset.isPositive ? .green : .red)
-                                    Text(asset.changePercentage)
-                                        .font(.subheadline)
-                                        .foregroundColor(asset.isPositive ? .green : .red)
-                                }
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(ownedCC) { asset in
+                                CryptoCell(cryptoSymbol: asset.cryptoSymbol, cryptoPrice: asset.priceAtWhichBought, image: asset.image, volume: 0.0, marketCap: 0.0, low: 0.0, high: 0.0, change: 0.0)
                             }
                         }
-                        .padding(.horizontal)
-                        .padding(.vertical, 10)
-                        Divider()
+                        .padding(.bottom,70)
                     }
                 }
                 Spacer()
@@ -103,12 +82,6 @@ let assetData = [
     Asset(icon: "e.circle.fill", name: "Ethereum", quantity: "0.75 ETH", price: "$1,866.82", changeAmount: "+$102.2", changePercentage: "+5.79%", isPositive: true, color: .gray),
     Asset(icon: "link.circle.fill", name: "Chainlink", quantity: "9.45 LINK", price: "$164.24", changeAmount: "+$12.3", changePercentage: "+8.09%", isPositive: true, color: .blue),
     Asset(icon: "l.circle.fill", name: "Litecoin", quantity: "2.76 LTC", price: "$385.82", changeAmount: "+$21.79", changePercentage: "+5.98%", isPositive: true, color: .green)
-]
-
-let recommendData = [
-    Recommendation(icon: "a.circle.fill", name: "Cardano", price: "$1.23"),
-    Recommendation(icon: "b.circle.fill", name: "Binance Coin", price: "$309.41"),
-    Recommendation(icon: "t.circle.fill", name: "Tron", price: "$0.060"),
 ]
 
 #Preview {

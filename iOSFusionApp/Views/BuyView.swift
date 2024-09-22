@@ -10,6 +10,8 @@ struct BuyView: View {
     @State private var buyAmount: Double = 0
     @State private var showingConfirmation = false
     
+    
+    @Environment(\.modelContext) var context
     @Environment(\.presentationMode) var presentationMode
     
     let formatter: NumberFormatter = {
@@ -159,7 +161,9 @@ struct BuyView: View {
                 title: Text("Confirm Purchase"),
                 message: Text("Are you sure you want to buy \(formatter.string(from: NSNumber(value: buyQuantity)) ?? "") \(cryptoSymbol) for $\(String(format: "%.2f", buyAmount))?"),
                 primaryButton: .default(Text("Confirm")) {
-                   
+                    let boughtCrypto =  OwnedCryptos(cryptoSymbol: cryptoSymbol, quantity: buyQuantity, priceAtWhichBought: buyAmount, image: image, volume: 0, marketCap: 0, low: 0, high: 0, change: 0, totalInvestment: 0)
+                    context.insert(boughtCrypto)
+                    
                     presentationMode.wrappedValue.dismiss()
                 },
                 secondaryButton: .cancel()
