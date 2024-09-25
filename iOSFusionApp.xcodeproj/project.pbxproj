@@ -106,9 +106,9 @@
 		3BCFDF1F2C90B1C2006AA7C3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3B382B372C91888A00C6A63F /* Tabs.swift */,
 				3BB7A83D2C907AF600ABD571 /* FetchGraphDetails.swift */,
 				3BB7A83F2C907AFD00ABD571 /* CryptoPrice.swift */,
-				3B382B372C91888A00C6A63F /* Tabs.swift */,
 				3B6A0D0A2C91984700ABEF89 /* FetchTopCrypto.swift */,
 				3B6A0D0C2C919EA600ABEF89 /* CryptoCurrencyData.swift */,
 			);

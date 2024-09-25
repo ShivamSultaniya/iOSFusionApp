@@ -3,15 +3,16 @@
 import Foundation
 
 struct CryptoGraphDataResponse: Codable {
-    struct Data: Codable {
-        struct PriceData: Codable {
-            let time: Int
-            let close: Double
-        }
-        let Data: [PriceData]
-    }
-    
-    let Data: Data
+    let Data: DataArray
+}
+
+struct DataArray: Codable {
+    let Data: [PriceData]
+}
+
+struct PriceData: Codable {
+    let time: Int
+    let close: Double
 }
 
 class FetchGraphDetails {
@@ -19,6 +20,12 @@ class FetchGraphDetails {
         guard let url = URL(string: "https://min-api.cryptocompare.com/data/v2/histoday?fsym=\(cryptoSymbol)&tsym=USD&limit=20#") else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            if let error = error {
+                print("Error fetching data: \(error)")
+                return
+            }
+            
             guard let data = data else { return }
 
             do {

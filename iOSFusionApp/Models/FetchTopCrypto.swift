@@ -33,14 +33,18 @@ struct CurrencyData: Codable {
 
 class FetchTopCrypto {
     func fetchTopCrypto(completion: @escaping ([CryptoCurrencyData]) -> () ){
-        let urlString = "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD"
-        guard let url = URL(string: urlString) else{
+        
+        guard let url = URL(string: "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD") else{
             print("Invalid URL")
             return
         }
         
-        let request = URLRequest(url: url)
-        let task = URLSession.shared.dataTask(with: request){ data, response, error in
+//        guard let url = URL(string: "https://min-api.cryptocompare.com/data/v2/histoday?fsym=\(cryptoSymbol)&tsym=USD&limit=20#") else { return }
+//        
+//        URLSession.shared.dataTask(with: url) { data, response, error in
+        
+//        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: url){ data, response, error in
             if let error = error {
                 print("Error fetching data: \(error)")
                 return

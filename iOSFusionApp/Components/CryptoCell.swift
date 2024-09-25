@@ -25,8 +25,10 @@ struct CryptoCell: View {
             
             VStack(alignment:.leading){
                 HStack(spacing:15){
-                    AsyncImage(url: URL(string: "https://cryptocompare.com/\(image)")){ image in
-                        image.image?.resizable()
+                    AsyncImage(url: URL(string: "https://cryptocompare.com/\(image)")) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
                     }
                     .frame(width: 50, height: 50)
                     
@@ -109,6 +111,20 @@ struct CryptoCell: View {
                 
             }
             .frame(width: 365, height: height)
+        }
+        .onTapGesture {
+            if(height == 150){
+                withAnimation {
+                    height = 220
+                    isTapped.toggle()
+                }
+            }
+            else{
+                withAnimation {
+                    height = 150
+                    isTapped.toggle()
+                }
+            }
         }
         .sheet(isPresented: $detailedView, content: {
             NavigationView {
@@ -223,20 +239,6 @@ struct CryptoCell: View {
                 }
             }
         })
-        .onTapGesture {
-            if(height == 150){
-                withAnimation {
-                    height = 220
-                    isTapped.toggle()
-                }
-            }
-            else{
-                withAnimation {
-                    height = 150
-                    isTapped.toggle()
-                }
-            }
-        }
     }
 }
 

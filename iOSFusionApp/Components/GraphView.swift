@@ -80,7 +80,7 @@ struct GraphView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        GraphView(cryptoSymbol: "BTC",detailedView: true)
+        GraphView(cryptoSymbol: "BTC",detailedView: false)
     }
 }
 

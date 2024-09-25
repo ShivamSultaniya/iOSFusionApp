@@ -5,7 +5,6 @@ struct Portfolio2: View {
     
     @Query(sort: \OwnedCryptos.quantity) var ownedCC: [OwnedCryptos] = []
     
-    
     var body: some View {
         VStack(alignment:.leading) {
             // Top section for portfolio balance

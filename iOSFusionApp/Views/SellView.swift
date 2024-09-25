@@ -56,7 +56,6 @@ struct SellView: View {
                 ProgressView()
             }
             .frame(width: 60, height: 60)
-            .cornerRadius(30)
             
             VStack(alignment: .leading) {
                 Text(cryptoSymbol)
