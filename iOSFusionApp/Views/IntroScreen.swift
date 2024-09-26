@@ -6,9 +6,9 @@ struct IntroScreen: View {
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [
-                Color.white,  // Light pink shade
+                Color.white,
                 Color(red: 199 / 255, green: 236 / 255, blue: 238 / 255),
-                Color(red: 199 / 255, green: 236 / 255, blue: 238 / 255)// #FEFBFA (off-white)
+                Color(red: 199 / 255, green: 236 / 255, blue: 238 / 255)
                 ]),startPoint: .topLeading, endPoint: .bottomTrailing)
             .ignoresSafeArea()
             
