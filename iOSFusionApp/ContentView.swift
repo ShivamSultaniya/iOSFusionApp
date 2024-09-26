@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = true
 
     var body: some View {
         Group {
@@ -19,12 +19,14 @@ struct ContentView: View {
                         .tag(Tab.portfolio)
                         .tabItem { Tab.portfolio.tabContent }
                 }
+                .transition(.opacity)
             }
-            
             else{
                 IntroScreen()
+                    .transition(.opacity)
             }
         }
+        .animation(.easeIn, value: hasSeenOnboarding)
     }
 }
 

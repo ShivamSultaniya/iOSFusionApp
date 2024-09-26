@@ -212,25 +212,9 @@ struct CryptoCell: View {
                             Text("Buy")
                                 .font(.headline)
                                 .foregroundStyle(.white)
-                                .frame(width: 180, height: 50)
+                                .frame(maxWidth: 390, maxHeight: 50)
                                 .background{
                                     Color.blue
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                }
-                        }                        
-                        Spacer()
-                        
-                        NavigationLink {
-                            //
-                            SellView(image: image, cryptoSymbol: cryptoSymbol, cryptoPrice: cryptoPrice, change: change)
-                        } label: {
-                            //
-                            Text("Sell")
-                                .font(.headline)
-                                .foregroundStyle(.white)
-                                .frame(width: 180, height: 50)
-                                .background{
-                                    Color.red
                                         .clipShape(RoundedRectangle(cornerRadius: 10))
                                 }
                         }

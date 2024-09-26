@@ -57,7 +57,7 @@ struct IntroScreen: View {
                             .padding(.horizontal,10)
                         
                         Button(action: {
-                            withAnimation{
+                            withAnimation {
                                 hasSeenOnboarding.toggle()
                             }
                         }) {
@@ -72,11 +72,6 @@ struct IntroScreen: View {
                 }
             }
             .ignoresSafeArea()
-            
-//            if !showContentView {
-//                ContentView()
-//                    .transition(.push(from: .trailing))
-//            }
         }
     }
 }

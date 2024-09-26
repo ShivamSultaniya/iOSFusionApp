@@ -38,12 +38,6 @@ class FetchTopCrypto {
             print("Invalid URL")
             return
         }
-        
-//        guard let url = URL(string: "https://min-api.cryptocompare.com/data/v2/histoday?fsym=\(cryptoSymbol)&tsym=USD&limit=20#") else { return }
-//        
-//        URLSession.shared.dataTask(with: url) { data, response, error in
-        
-//        let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: url){ data, response, error in
             if let error = error {
                 print("Error fetching data: \(error)")

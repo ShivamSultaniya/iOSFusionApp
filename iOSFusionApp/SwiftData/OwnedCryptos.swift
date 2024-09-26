@@ -29,6 +29,4 @@ class OwnedCryptos{
         self.totalInvestment = totalInvestment
     }
 }
-//CryptoCell(cryptoSymbol: "BTC", cryptoName: "Bitcoin", cryptoPrice: 58573.2942865166, image: "media/37746251/btc.png", volume: 100.0, marketCap: 10000.0, low: 58573.2942865166, high: 58573.2942865166, change: 1.27)
 
-//CryptoCell(cryptoSymbol: <#T##String#>, cryptoPrice: <#T##Double#>, image: <#T##String#>, volume: <#T##Double#>, marketCap: <#T##Double#>, low: <#T##Double#>, high: <#T##Double#>, change: <#T##Double#>)?

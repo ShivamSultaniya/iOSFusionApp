@@ -27,6 +27,7 @@
 		3BDAE9AE2C8CAF6700F9D938 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BDAE9AD2C8CAF6700F9D938 /* Assets.xcassets */; };
 		3BDAE9B12C8CAF6700F9D938 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BDAE9B02C8CAF6700F9D938 /* Preview Assets.xcassets */; };
 		3BDAE9B82C8CAF7600F9D938 /* IntroScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDAE9B72C8CAF7600F9D938 /* IntroScreen.swift */; };
+		3BF3D3E82CA40B1A0088325C /* Introscreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF3D3E72CA40B1A0088325C /* Introscreen2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		3BDAE9AD2C8CAF6700F9D938 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BDAE9B02C8CAF6700F9D938 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3BDAE9B72C8CAF7600F9D938 /* IntroScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreen.swift; sourceTree = "<group>"; };
+		3BF3D3E72CA40B1A0088325C /* Introscreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Introscreen2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				3BDAE9B72C8CAF7600F9D938 /* IntroScreen.swift */,
+				3BF3D3E72CA40B1A0088325C /* Introscreen2.swift */,
 				3BCFDF1D2C90AE33006AA7C3 /* HomeView.swift */,
 				3B382B392C9188B900C6A63F /* Search.swift */,
 				3B382B3B2C9188C700C6A63F /* Portfolio.swift */,
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BB7A83E2C907AF600ABD571 /* FetchGraphDetails.swift in Sources */,
+				3BF3D3E82CA40B1A0088325C /* Introscreen2.swift in Sources */,
 				3B53E1FE2C91BAED001E3CDD /* Helpers.swift in Sources */,
 				3BB7A83A2C90740900ABD571 /* CryptoCell.swift in Sources */,
 				3BB7A83C2C907AE500ABD571 /* GraphView.swift in Sources */,
@@ -378,6 +382,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iOSFusionApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Workshop;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -406,6 +411,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iOSFusionApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Workshop;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
